@@ -507,3 +507,8 @@ a:focus-visible, button:focus-visible{
 /* Menu: accepte .open ou .is-open, même comportement */
 .menu{ display:block !important; transform:translateY(-100%); transition:transform .28s ease; will-change:transform; }
 .menu.open, .menu.is-open{ transform:translateY(0); }
+:root{
+  --fs-h1: clamp(2.2rem, 5vw, 3.2rem);
+}
+h1{ font-size: var(--fs-h1); line-height:1.15; } /* couvre tous les h1 */
+:is(section, article, aside, nav) h1{ font-size: var(--fs-h1); } /* couvre le h1 du hero */
