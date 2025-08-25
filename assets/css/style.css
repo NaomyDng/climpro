@@ -512,3 +512,9 @@ a:focus-visible, button:focus-visible{
 }
 h1{ font-size: var(--fs-h1); line-height:1.15; } /* couvre tous les h1 */
 :is(section, article, aside, nav) h1{ font-size: var(--fs-h1); } /* couvre le h1 du hero */
+/* Force une taille pour les <h1> dans les sections */
+.hero__title{ font-size: clamp(32px, 4.8vw, 56px); line-height: 1.1; }
+.section__title{ font-size: clamp(28px, 3.8vw, 40px); line-height: 1.15; }
+
+/* Filet de sécurité au cas où un <h1> se glisse ailleurs dans un sectioning element */
+:where(article,aside,nav,section) h1{ font-size: clamp(28px, 3.6vw, 40px); line-height: 1.15; }
