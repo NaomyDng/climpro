@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ClimPro — style.css (clean)
+   ClimPro — style.css (clean, safe-grouped)
    ========================================================================== */
 
 /* ===== Variables / Base ===== */
@@ -129,13 +129,9 @@ img{ max-width:100%; display:block }
   right: 20px;
   bottom: calc(20px + 56px); /* au-dessus du bouton backToTop */
   z-index: 60;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: var(--brand);
-  color: #fff;
+  width: 60px; height: 60px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--brand); color: #fff;
   box-shadow: var(--shadow);
   text-decoration: none;
 }
@@ -195,8 +191,15 @@ img{ max-width:100%; display:block }
   display:inline-flex; align-items:center; justify-content:center; gap:.5rem; text-decoration:none;
   padding:.8rem 1.05rem; border-radius:12px; font-weight:800; border:1px solid transparent; cursor:pointer;
 }
-.btn--primary{ background:var(--brand); color:#fff; box-shadow: 0 6px 20px rgba(14,165,233,.35); }
-.btn--primary:hover{ background:var(--brand-2) }
+.btn--primary{
+  background:#0369a1;   /* bleu conforme AA */
+  color:#fff;
+  box-shadow: 0 6px 20px rgba(2,6,23,.25);
+}
+.btn--primary:hover{
+  background:#0369a1;   /* hover un peu plus foncé */
+  color:#fff;
+}
 .btn--ghost{ background:transparent; color:#e2e8f0; border-color:rgba(148,163,184,.35) }
 .btn--ghost:hover{ border-color:#e2e8f0 }
 
@@ -216,8 +219,7 @@ img{ max-width:100%; display:block }
 .card h3{ margin:0 0 6px; color: var(--text); }
 .card p{ margin:0; color:var(--muted) }
 .cards a.card{ color: var(--text); display:block; }
-.cards a.card:visited,
-.cards a.card:hover{ color: var(--text); }
+.cards a.card:visited, .cards a.card:hover{ color: var(--text); }
 .card:hover{
   box-shadow:
     0 12px 28px rgba(14,165,233,.30),
@@ -226,13 +228,13 @@ img{ max-width:100%; display:block }
 
 /* ===== Avis ===== */
 .reviews{ display:grid; grid-template-columns: repeat(3, 1fr); gap:12px }
-.review{ background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:16px; box-shadow: var(--shadow) }
+.review{ background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:16px; box-shadow:var(--shadow) }
 .review__head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:6px }
 .stars{ display:flex; gap:4px }
 .stars img{ width:18px; height:18px }
 
 /* ===== Formulaire ===== */
-.form{ background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:16px; box-shadow: var(--shadow) }
+.form{ background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:16px; box-shadow:var(--shadow) }
 .form__row{ display:grid; grid-template-columns:1fr 1fr; gap:10px }
 .field{ display:flex; flex-direction:column; gap:6px }
 label{ font-weight:700 }
@@ -261,14 +263,8 @@ input, select, textarea{
 .logo--footer{ height:40px; filter: drop-shadow(0 6px 12px rgba(0,0,0,.35)); }
 .footer__links a{ color:#e2e8f0; text-decoration:none; margin-right:12px }
 .footer__links a:hover{ text-decoration:underline }
-.footer a {
-  color: inherit;   /* hérite de la couleur du texte du footer */
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
+.footer a { color: inherit; text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
 
 /* ===== MENU (drawer) ===== */
 .menu{
@@ -336,6 +332,7 @@ input, select, textarea{
   .hero__title{ font-size: clamp(1.4rem, 4.2vw + .8rem, 2.2rem); }
   .call-float{ bottom: 20px; } /* le bouton descend un peu */
   #backToTop{ right: 88px; } /* décale pour éviter le chevauchement */
+
   /* Cartes : par défaut en colonne */
   .section .cards{ grid-template-columns:1fr; }
   .section .cards > .card{ width:100%; justify-self:stretch; }
@@ -391,15 +388,11 @@ img, video, svg, canvas { max-width: 100%; height: auto; display: block; }
 }
 
 /* CTA sous l'image (entretien / dépannage) */
-.maintenance__cta,
-.repair__cta{
+.maintenance__cta, .repair__cta{
   margin-top:10px;
   display:flex;
 }
-.maintenance__cta .btn,
-.repair__cta .btn{
-  width:100%;
-}
+.maintenance__cta .btn, .repair__cta .btn{ width:100%; } /* (garde le width 100% ici) */
 
 /* ===== Mobile fixes: header alignment + media height ===== */
 
@@ -421,33 +414,15 @@ img, video, svg, canvas { max-width: 100%; height: auto; display: block; }
     height: 120px;           /* logo un peu plus compact que 130px */
     margin-top: -44px;       /* remonte juste ce qu'il faut sans déborder */
   }
-  .hamburger{
-    margin-right: 0;
-  }
+  .hamburger{ margin-right: 0; }
 }
 
 /* Subpages: stop images from stretching columns on mobile */
 @media (max-width: 980px){
-  .maintenance__media,
-  .repair__media{
-    height: auto;
-  }
-  .maintenance__media img,
-  .repair__media img{
+  .maintenance__media, .repair__media{ height: auto; }
+  .maintenance__media img, .repair__media img{
     height: auto;
     object-fit: contain;     /* évite le crop et les chevauchements */
-  }
-}
-
-/* Space the “CTA under image” nicely on narrow screens */
-@media (max-width: 720px){
-  .maintenance__cta,
-  .repair__cta{
-    margin-top: 10px;
-  }
-  .maintenance__cta .btn,
-  .repair__cta .btn{
-    width: 100%;
   }
 }
 
@@ -461,33 +436,74 @@ img, video, svg, canvas { max-width: 100%; height: auto; display: block; }
 
 /* CTA large sur mobile */
 @media (max-width:720px){
-  .maintenance__cta .btn{ width:100%; }
+  /* doublon supprimé : width:100% déjà appliqué au-dessus */
+  /* .maintenance__cta .btn, .repair__cta .btn{ width:100%; } */
 }
 
 /* Ancrages : marge de scroll sous la nav */
 #devis, #contact { scroll-margin-top: 80px; }
 
-/* 1) Le hero doit couper tout dépassement */
-.hero{
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;            /* <-- clé : masque tout ce qui dépasse (image/zoom) */
+/* =====================================================================
+   >>> PATCH #1 — Navbar & logo (taille/placement propre)
+   ===================================================================== */
+:root{ --header-h:64px; }                        /* cohérent avec ta nav */
+
+.container.nav-inner{ display:flex; align-items:center; justify-content:space-between; gap:16px }
+
+.logo-wrap{ display:flex; align-items:center; margin-left:0 !important; height:var(--header-h) !important; }
+.logo{
+  height:calc(var(--header-h) - 16px) !important; /* logo dans la barre */
+  width:auto !important;
+  max-width:180px;
+  margin-top:0 !important;
+}
+@media (min-width:768px){ .logo{ height:48px !important; } }
+@media (max-width:480px){ .logo{ height:36px !important; } }
+
+/* =====================================================================
+   >>> PATCH #2 — CLS zéro : header réservé + hero stable + menu overlay
+   ===================================================================== */
+/* Réserve la hauteur du header pour empêcher tout shift */
+.header{ height:var(--header-h) !important; }
+.nav-inner{ min-height:var(--header-h) !important; }
+
+/* Stabilise le contenu du hero (badges/titre) */
+.hero__content{ position:relative; z-index:2; }
+.hero__badge{ display:inline-block; min-height:24px; }
+.hero__title{ margin:0 0 .4em; }
+.trust{ margin:0; padding:0; }
+
+/* Menu en overlay (n'affecte pas le layout quand il s'ouvre) */
+.menu{
+  position:fixed !important; inset:0 !important;
+  transform:translateY(-100%); transition:transform .28s ease; will-change:transform;
+}
+.menu.is-open{ transform:translateY(0); }
+
+/* =====================================================================
+   >>> PATCH #3 — Accessibilité : titres explicites + contraste + focus
+   ===================================================================== */
+:root{
+  --fs-h1: clamp(2.2rem, 5vw, 3.2rem);
+  --fs-h2: clamp(1.8rem, 4vw, 2.4rem);
+  --fs-h3: clamp(1.4rem, 3vw, 1.8rem);
+}
+h1{ font-size: var(--fs-h1); line-height:1.15; margin:0 0 .5em; }
+h2{ font-size: var(--fs-h2); line-height:1.2;  margin:1em 0 .5em; }
+h3{ font-size: var(--fs-h3); line-height:1.25; margin:1em 0 .5em; }
+:is(section, article, aside, nav) h1{ font-size: var(--fs-h1); }
+
+/* Contraste : on garde ton bleu, on renforce la lisibilité via l’overlay */
+.hero__overlay{ background: linear-gradient(180deg, rgba(2,6,23,.42), rgba(2,6,23,.58)) !important; }
+
+/* Focus clavier visible */
+a:focus-visible, button:focus-visible{
+  outline:2px solid #0b1220; outline-offset:2px; border-radius:4px;
 }
 
-/* 2) BG et overlay couvrent EXACTEMENT le hero */
-.hero__bg,
-.hero__overlay{
-  position: absolute;
-  inset: 0;                    /* top:0; right:0; bottom:0; left:0 */
-}
+/* Option contraste AA strict (facultatif) */
+/* .btn--primary{ color:#0b1220 !important; } */
 
-/* 3) L’image remplit le hero sans dépasser visuellement */
-.hero__bg img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  /* Si tu veux garder l'effet zoom, laisse le scale.
-     Sinon, remets-le à 'none'. */
-  transform: scale(1.03);
-}
+/* Menu: accepte .open ou .is-open, même comportement */
+.menu{ display:block !important; transform:translateY(-100%); transition:transform .28s ease; will-change:transform; }
+.menu.open, .menu.is-open{ transform:translateY(0); }
