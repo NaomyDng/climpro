@@ -23,8 +23,6 @@
         { "key": "CDN-Cache-Control", "value": "no-cache" }
       ]
     },
-
-    /* ⬇️ NOUVEAU : tous les fichiers statiques (où qu'ils soient) */
     {
       "source": "/(.*)\\.(js|css|png|jpg|jpeg|webp|avif|svg|gif|ico|woff|woff2)",
       "headers": [
@@ -32,8 +30,6 @@
         { "key": "CDN-Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
-
-    /* Ta règle existante pour /assets (on la garde) */
     {
       "source": "/assets/(.*)",
       "headers": [
@@ -41,7 +37,6 @@
         { "key": "CDN-Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
-
     {
       "source": "/(.*)",
       "headers": [
