@@ -452,13 +452,13 @@ img, video, svg, canvas { max-width: 100%; height: auto; display: block; }
 
 .logo-wrap{ display:flex; align-items:center; margin-left:0 !important; height:var(--header-h) !important; }
 .logo{
-  height:calc(var(--header-h) - 16px) !important; /* logo dans la barre */
+  height:calc(var(--header-h) - 12px) !important; /* logo dans la barre */
   width:auto !important;
   max-width:180px;
   margin-top:0 !important;
 }
-@media (min-width:768px){ .logo{ height:48px !important; } }
-@media (max-width:480px){ .logo{ height:36px !important; } }
+@media (min-width:768px){ .logo{ height:52px !important; } }
+@media (max-width:480px){ .logo{ height:40px !important; } }
 
 /* =====================================================================
    >>> PATCH #2 — CLS zéro : header réservé + hero stable + menu overlay
